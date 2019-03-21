@@ -5,11 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/styles.css">
-  <title>Javascript 2 CETAV</title>
+  <title>Sheet</title>
 </head>
 <body>
-  <h1>Javascript 2 CETAV</h1>
-  <div id="container"></div>
-  <script src="js/script.js"></script>
+  <div class="header">
+    <button class="btn" id="negrita" disabled>B</button>
+    <button class="btn" id="cursiva" disabled>I</button>
+    <select class="btn" id="tamaño" disabled>
+      <option value="8">8 px</option>
+      <option value="10">10 px</option>
+      <option value="12">12 px</option>
+      <option value="14">14 px</option>
+      <option value="20">20 px</option>
+    </select>
+  </div>
+  <div class="cont-table">
+    <table id="container" class="customers"></table>
+    <button id="add-row">add</button>
+  </div>
+
+  <script src="js/createDoom.js"></script>
+  <script src="js/prototype.js"></script>
+  <script src="js/singleton.js"></script>
+  <script src="js/mediator.js"></script>
+  <script src="js/module.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
