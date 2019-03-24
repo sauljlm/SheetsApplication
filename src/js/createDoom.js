@@ -33,16 +33,17 @@ const createDoom = (function(){
     }
 
     static th(index ='') {
+      if (index === 0) index = '';
       let th = this.element('th');
       th.innerHTML = index;
       return th;
     }
 
     static td(value = '', rowIndex, columnIndex) {
-      let td = this.element('td');
-      td.innerHTML = value;
-      td.setAttribute('data-array', `${rowIndex}:${columnIndex}`);
-      return td
+        let td = this.element('td');
+        td.innerHTML = value;
+        td.setAttribute('data-array', `${rowIndex}:${columnIndex}`);
+        return td
     }
   
     /**
