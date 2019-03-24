@@ -1,50 +1,48 @@
-class Build {
-  constructor() {
-    this._column = null;
-    this._container = document.querySelector('#container');
-  }
+const build = (function(){
+  const container = document.querySelector('.cont-table');
+  let instance = null;
+  let DATA = [[]];
 
-  buildTable(_array, config) {
-    const array = [];
+  return class Build {
+    constructor() {
+      if(instance) return instance;
+      return instance = this;
+    }
 
-    for (let i = 0; i < config.rows; i += 1) {
-      array[i] = [];
-      const column = CreateDoom.element('tr');
-      array[i].push(column);
-      console.log(array);
-      this._container.appendChild(column);
-      for (let j = 0; j < config.columns; j += 1) {
-        let row = null;
-        row = this.configTable(row, i, j);
-        // console.log(row);
-        array[i][j].push(row);
-        column.appendChild(row);
+    addRow(value = '') {
+      let column = [];
+      for (let i = 0; i < DATA[0].length; i++) {
+        column.push(value);
       }
+      DATA.push(column);
+      return DATA;
     }
-    console.log(array);
-    _array.push(array);
-  }
 
-  configTable(row, i, j) {
-    if(i === 0 || j === 0) {
-      row = CreateDoom.element('th');
-    } else if (i === 0 && i > 0) {
-      row = CreateDoom.element('th');
-      row.innerHTML = `${_array[i][i]}`;
-    } else {
-      row = CreateDoom.element('td');
+    addColumn(value = '') {
+      DATA.forEach((row) => {
+        row.push(value);
+      }); 
     }
-    return row;
-  }
 
-  addRow(columns) {
-    let row = null;
-    _column.appendChild(this.configTable(row, i, j));
-  }
+    render() {
+      let table = createDoom.element('table');
+      DATA.forEach((row, rowIndex) => {
+        let tr = createDoom.tr();
+        tr.appendChild(createDoom.th(rowIndex+1));
+        row.forEach((column, columnIndex) => {
+          tr.appendChild(createDoom.td(column, rowIndex, columnIndex));
+        });
+        table.setAttribute('class', 'customers');
+        table.appendChild(tr);
+      });
+      container.appendChild(table);
+    }
 
-  write(row) {
-    const input = CreateDoom.element('input', {type: 'type', value : 'text'});
-    input.CreateDoom.atribute({type: 'class', value : 'write'});
-    row.appendChild(input);
-  }
-}
+
+    write(row) {
+      const input = CreateDoom.element('input', {type: 'type', value : 'text'});
+      input.CreateDoom.atribute({type: 'class', value : 'write'});
+      row.appendChild(input);
+    }
+  }  
+})();
