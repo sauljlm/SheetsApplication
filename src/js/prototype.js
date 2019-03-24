@@ -15,6 +15,7 @@ const build = (function(){
         column.push(value);
       }
       DATA.push(column);
+      console.log(DATA);
       return DATA;
     }
 
@@ -22,9 +23,11 @@ const build = (function(){
       DATA.forEach((row) => {
         row.push(value);
       }); 
+      console.log(DATA);
     }
 
     render() {
+      container.innerHTML = '';
       let table = createDoom.element('table');
       DATA.forEach((row, rowIndex) => {
         let tr = createDoom.tr();

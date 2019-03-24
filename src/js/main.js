@@ -1,6 +1,7 @@
 const main = (function() {
   const _container = document.querySelector('.cont-table');
-  const btnAdd = document.querySelector('#add-row');
+  const btnAddRow = document.querySelector('#add-row');
+  const btnAddColumn = document.querySelector('#add-column');
 
   let config = {
     rows : 10,
@@ -17,6 +18,18 @@ const main = (function() {
     }
     table.render();
   }
+
+  btnAddRow.addEventListener('click', () => {
+    const newRow = new build();
+    newRow.addRow();
+    newRow.render();
+  });
+
+  btnAddColumn.addEventListener('click', () => {
+    const newColumn = new build();
+    newColumn.addColumn();
+    newColumn.render();
+  });
 
   window.onload = function() {
     init();
